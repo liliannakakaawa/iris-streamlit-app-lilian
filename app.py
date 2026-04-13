@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 # Function
 def get_flower_image(species):
     if species == "Iris-setosa":
-        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa.jpg"
+        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa_flower.jpg"
     elif species == "Iris-versicolor":
         return "https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg"
     else:
