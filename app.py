@@ -39,7 +39,9 @@ st.write(input_df)
 if st.button("Predict Species"):
     prediction = model.predict(input_data)
     st.success(f"Prediction: {prediction[0]}")
-  col1, col2 = st.columns(2)
+    
+# Inputs layout
+col1, col2 = st.columns(2)
 
 with col1:
     sepal_length = st.number_input("Sepal Length", value=5.0)
