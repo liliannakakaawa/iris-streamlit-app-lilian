@@ -3,16 +3,15 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 
-# -----------------------------
 # FUNCTION: Get flower image
-# -----------------------------
+
 def get_flower_image(species):
     if species == "Iris-setosa":
-        return "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Iris_setosa_flower.jpg/640px-Iris_setosa_flower.jpg"
+        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa.jpg"
     elif species == "Iris-versicolor":
-        return "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Iris_versicolor_3.jpg/640px-Iris_versicolor_3.jpg"
+        return "https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg"
     else:
-        return "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/640px-Iris_virginica.jpg"
+        return "https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg"
 
 # -----------------------------
 # LOAD DATA
@@ -62,6 +61,7 @@ if st.button("Predict Species"):
     # -----------------------------
     img_url = get_flower_image(prediction[0])
     st.image(img_url, caption="Predicted Flower", use_container_width=True)
+    st.success(f"🌸 Predicted Species: {prediction[0]}")
 
     # -----------------------------
     # RESULT
