@@ -31,3 +31,6 @@ prediction = model.predict(input_data)
 # Output
 st.subheader("Prediction:")
 st.success(prediction[0])
+st.subheader("Input Values:")
+input_df = pd.DataFrame(input_data, columns=X.columns)
+st.write(input_df)
