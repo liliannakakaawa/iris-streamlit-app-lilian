@@ -27,6 +27,8 @@ petal_width = st.slider("Petal Width", float(df["petal_width"].min()), float(df[
 # Prediction
 input_data = [[sepal_length, sepal_width, petal_length, petal_width]]
 prediction = model.predict(input_data)
+img_url = get_flower_image(prediction[0])
+st.image(img_url, caption="Predicted Flower")
 
 # Output
 st.subheader("Prediction:")
@@ -34,3 +36,36 @@ st.success(prediction[0])
 st.subheader("Input Values:")
 input_df = pd.DataFrame(input_data, columns=X.columns)
 st.write(input_df)
+if st.button("Predict Species"):
+    prediction = model.predict(input_data)
+    st.success(f"Prediction: {prediction[0]}")
+  col1, col2 = st.columns(2)
+
+with col1:
+    sepal_length = st.number_input("Sepal Length", value=5.0)
+    sepal_width = st.number_input("Sepal Width", value=3.0)
+
+with col2:
+    petal_length = st.number_input("Petal Length", value=4.0)
+    petal_width = st.number_input("Petal Width", value=1.0)
+  def get_flower_image(species):
+    if species == "Iris-setosa":
+        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa.jpg"
+    elif species == "Iris-versicolor":
+        return "https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg"
+    else:
+        return "https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg"
+      import matplotlib.pyplot as plt
+
+probs = model.predict_proba(input_data)[0]
+
+fig, ax = plt.subplots()
+ax.bar(model.classes_, probs)
+
+st.pyplot(fig)
+st.subheader("Prediction Result")
+st.markdown(f"### 🌿 {prediction[0]}")
+st.info("This prediction is based on petal and sepal measurements using a Random Forest model.")
+from sklearn.metrics import accuracy_score
+st.write("Model Accuracy:", accuracy_score(y, model.predict(X)))
+st.title("🌸 AI-Powered Iris Classifier")
