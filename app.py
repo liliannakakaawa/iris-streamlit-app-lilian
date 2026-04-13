@@ -1,6 +1,14 @@
 import streamlit as st
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+# Function
+def get_flower_image(species):
+    if species == "Iris-setosa":
+        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa.jpg"
+    elif species == "Iris-versicolor":
+        return "https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg"
+    else:
+        return "https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg"
 
 # Load dataset
 df = pd.read_csv("IRIS.csv")
@@ -50,13 +58,7 @@ with col1:
 with col2:
     petal_length = st.number_input("Petal Length", value=4.0)
     petal_width = st.number_input("Petal Width", value=1.0)
-def get_flower_image(species):
-    if species == "Iris-setosa":
-        return "https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa.jpg"
-    elif species == "Iris-versicolor":
-        return "https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg"
-    else:
-        return "https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg"
+
 import matplotlib.pyplot as plt
 
 probs = model.predict_proba(input_data)[0]
